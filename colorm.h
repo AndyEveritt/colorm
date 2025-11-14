@@ -5718,9 +5718,14 @@ namespace colorm
 	{
 		template <typename T> inline T blendNormal(const T& ts, const T& tb, double vmax = 1.0)
 		{
-			return blend(ts, tb, vmax, [](double cb, double cs) -> double {
-				return normalize1(cs);
-			});
+			return blend(ts,
+						 tb,
+						 vmax,
+						 [](double cb, double cs) -> double
+						 {
+							 (void)cb; // unused
+							 return normalize1(cs);
+						 });
 		}
 	}
 
